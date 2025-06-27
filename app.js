@@ -143,6 +143,8 @@ async function writeChunk(chunk, writeStream, stream) {
   });
 }
 
+app.get("/health", (req, res) => res.status(200).send("OK"));
+
 app.get("/api/v1/cluster", (req, res) => {
   const clusters = {
     type: "FeatureCollection",
