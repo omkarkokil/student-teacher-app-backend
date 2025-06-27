@@ -17,6 +17,7 @@ app.use(
 );
 app.use(express.json());
 
+// test account not checking might be issue regading not pre data inside the
 app.use("/api/v1", require("./app/User/route"));
 app.use("/api/v1", require("./app/post/route"));
 app.use("/api/v1", require("./app/Teacher/route"));
