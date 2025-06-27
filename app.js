@@ -1,5 +1,5 @@
 const express = require("express");
-const sequelize = require("./config/database");
+// const sequelize = require("./config/database");
 require("dotenv").config();
 const cors = require("cors");
 const fs = require("fs");
@@ -313,12 +313,14 @@ app.get("/", function (req, res) {
   res.send("Hello world!");
 });
 
-sequelize
-  .sync({ force: false })
-  .then(() => {
-    console.log("Database synced");
-    app.listen(4000, () =>
-      console.log("Server running at http://localhost:4000")
-    );
-  })
-  .catch((err) => console.error("DB Connection Error:", err));
+app.listen(4000, () => console.log("Server running at http://localhost:4000"));
+
+// sequelize
+//   .sync({ force: false })
+//   .then(() => {
+//     console.log("Database synced");
+//     app.listen(4000, () =>
+//       console.log("Server running at http://localhost:4000")
+//     );
+//   })
+//   .catch((err) => console.error("DB Connection Error:", err));
