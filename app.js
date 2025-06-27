@@ -24,6 +24,9 @@ app.use("/api/v1", require("./app/Student/route"));
 
 app.use("/static", express.static(path.join(__dirname)));
 
+app.get("/", (req, res) => {
+  res.send("hello your app is running");
+});
 const upload = multer({
   dest: "uploads/",
   fileFilter: (req, file, cb) => {
