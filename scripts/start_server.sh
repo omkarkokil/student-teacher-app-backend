@@ -16,5 +16,5 @@ fi
 sudo runuser -l ec2-user -c "cd $APP_DIR && pm2 start $APP_FILE --name myapp" >> $APP_DIR/start.log 2>&1
 
 # Optional: set up PM2 to start on reboot
-sudo runuser -l ec2-user -c "pm2 startup --shell bash --yes"
-sudo runuser -l ec2-user -c "pm2 save"
+#sudo runuser -l ec2-user -c "pm2 startup --shell bash --yes"
+# sudo runuser -l ec2-user -c "pm2 save"
