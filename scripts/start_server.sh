@@ -1,3 +1,5 @@
-#!/bin/bash
-cd /home/ec2-user/myapp
-nohup node app.js > server.log 2>&1 &
+cd /home/ec2-user/app
+pm2 stop all || true
+pm2 start index.js --name "my-node-app"
+
+
