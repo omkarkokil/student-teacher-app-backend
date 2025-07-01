@@ -5,7 +5,7 @@ const authMiddleware = require("../../middleware/authMiddleware");
 const router = express.Router();
 
 // Create Teacher (User + Teacher in one API)
-router.post("/teacher", authMiddleware, async (req, res) => {
+router.post("/teacher", async (req, res) => {
   try {
     const { name, email, department, classes } = req.body;
 
@@ -36,7 +36,7 @@ router.post("/teacher", authMiddleware, async (req, res) => {
 });
 
 // Get all Teachers
-router.get("/teacher", authMiddleware, async (req, res) => {
+router.get("/teacher", async (req, res) => {
   try {
     const teachers = await Teacher.findAll({
       include: [{ model: User, attributes: ["id", "name", "email"] }],
