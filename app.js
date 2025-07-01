@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://d1ste07zgdzxet.cloudfront.net",
     credentials: true,
   })
 );
