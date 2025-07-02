@@ -21,7 +21,7 @@ AWS_ACCESS_KEY_ID=$(aws ssm get-parameter --name "/myapp/AWS_ACCESS_KEY_ID" --wi
 AWS_SECRET_ACCESS_KEY=$(aws ssm get-parameter --name "/myapp/AWS_SECRET_ACCESS_KEY" --with-decryption --query "Parameter.Value" --output text)
 
 sudo runuser -l ec2-user -c "
-cd $APP_DIR
+cd /home/ec2-user/myapp
 echo 'DB_HOST=$DB_HOST' > .env
 echo 'DB_PORT=$DB_PORT' > .env
 echo 'DB_NAME=$DB_NAME' > .env
