@@ -6,7 +6,7 @@ APP_FILE="app.js"
 
 echo "Starting app at $(date)" >> $APP_DIR/start.log
 
-# Check and install PM2 globally if not found base test commit
+# Check and install PM2 globally if not found base test commit for one
 if ! command -v pm2 &> /dev/null; then
   echo "PM2 not found, installing..." >> $APP_DIR/start.log
   sudo npm install -g pm2
