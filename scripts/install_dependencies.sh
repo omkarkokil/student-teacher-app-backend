@@ -20,21 +20,20 @@ SQS_QUEUE_URL=$(aws ssm get-parameter --name "/myapp/SQS_QUEUE_URL" --with-decry
 AWS_ACCESS_KEY_ID=$(aws ssm get-parameter --name "/myapp/AWS_ACCESS_KEY_ID" --with-decryption --query "Parameter.Value" --output text)
 AWS_SECRET_ACCESS_KEY=$(aws ssm get-parameter --name "/myapp/AWS_SECRET_ACCESS_KEY" --with-decryption --query "Parameter.Value" --output text)
 
-sudo runuser -l ec2-user -c "
-cd /home/ec2-user/myapp
-cat > .env <<EOF
-DB_HOST=$DB_HOST
-DB_PORT=$DB_PORT
-DB_NAME=$DB_NAME
-DB_USER=$DB_USER
-DB_PASSWORD=$DB_PASSWORD
-JWT_SECRET=$JWT_SECRET
-SQS_QUEUE_URL=$SQS_QUEUE_URL
-BUCKET_NAME=$BUCKET_NAME
-AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+
+sudo runuser -l ec2-user -c "cd /home/ec2-user/myapp && cat > .env" <<'EOF'
+DB_HOST='"$DB_HOST"'
+DB_PORT='"$DB_PORT"'
+DB_NAME='"$DB_NAME"'
+DB_USER='"$DB_USER"'
+DB_PASSWORD='"$DB_PASSWORD"'
+JWT_SECRET='"$JWT_SECRET"'
+SQS_QUEUE_URL='"$SQS_QUEUE_URL"'
+BUCKET_NAME='"$BUCKET_NAME"'
+AWS_ACCESS_KEY_ID='"$AWS_ACCESS_KEY_ID"'
+AWS_SECRET_ACCESS_KEY='"$AWS_SECRET_ACCESS_KEY"'
 EOF
-"
+
 
 
 # Ensure proper permissions
