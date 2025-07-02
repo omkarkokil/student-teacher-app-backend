@@ -22,17 +22,20 @@ AWS_SECRET_ACCESS_KEY=$(aws ssm get-parameter --name "/myapp/AWS_SECRET_ACCESS_K
 
 sudo runuser -l ec2-user -c "
 cd /home/ec2-user/myapp
-echo 'DB_HOST=$DB_HOST' > .env
-echo 'DB_PORT=$DB_PORT' > .env
-echo 'DB_NAME=$DB_NAME' > .env
-echo 'DB_USER=$DB_USER' > .env
-echo 'DB_PASSWORD=$DB_PASSWORD' > .env
-echo 'JWT_SECRET=$JWT_SECRET' > .env
-echo 'SQS_QUEUE_URL=$SQS_QUEUE_URL' > .env
-echo 'BUCKET_NAME=$BUCKET_NAME' > .env
-echo 'AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID' > .env
-echo 'AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY' > .env
+cat > .env <<EOF
+DB_HOST=$DB_HOST
+DB_PORT=$DB_PORT
+DB_NAME=$DB_NAME
+DB_USER=$DB_USER
+DB_PASSWORD=$DB_PASSWORD
+JWT_SECRET=$JWT_SECRET
+SQS_QUEUE_URL=$SQS_QUEUE_URL
+BUCKET_NAME=$BUCKET_NAME
+AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+EOF
 "
+
 
 # Ensure proper permissions
 sudo chown -R ec2-user:ec2-user /home/ec2-user/myapp
