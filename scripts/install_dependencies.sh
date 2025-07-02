@@ -9,7 +9,6 @@ echo "Installing dependencies at $(date)" >> /home/ec2-user/install.log
 
 echo "✅ Fetching environment variables from SSM..."
 
-
 DB_HOST=$(aws ssm get-parameter --name "/myapp/DB_HOST" --query "Parameter.Value" --output text)
 DB_PORT=$(aws ssm get-parameter --name "/myapp/DB_PORT" --query "Parameter.Value" --output text)
 DB_NAME=$(aws ssm get-parameter --name "/myapp/DB_NAME"  --query "Parameter.Value" --output text)
